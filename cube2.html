@@ -1,0 +1,63 @@
+<html>
+<body>
+<style>
+@keyframes movingbg
+{
+   from {background-position:0px}
+    to  {background-position:-800px}
+}
+@keyframes movingbg2
+{
+   from {background-position:-100px}
+    to  {background-position:-900px}
+}
+div.base
+{
+    width:100px;height:100px;
+    position:relative;
+    background-image:url(https://images.unsplash.com/photo-1445217143695-467124038776?auto=format&fit=crop&w=1433&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D)
+}
+#p1{animation:movingbg 50s infinite;top:85px;left:0px}
+#p2{animation:movingbg2 50s infinite; left:100px;top:-50px;transform:skew(0,-45deg);width:71px}
+#p3{animation:movingbg 50s infinite;top:85px;left:35px;top:-185px;transform:skew(-45deg,0deg);height:71px}
+</style>
+<div onclick="this.innerHTML=document.getElementById('bigdiv').innerHTML">
+<div id=p1 class=base ><!-- --></div>
+<div id=p2 class=base ><!-- --></div>
+<div id=p3 class=base ><!-- --></div>
+</div>
+
+
+<style>
+@keyframes movingbg11 /*front*/
+{
+   from {background-position:0px -300px}
+    to  {background-position:-600px -300px}
+}
+@keyframes movingbg13 /*top*/
+{
+   from {background-position:0px 0px}
+    to  {background-position:-600px 0px}
+}
+@keyframes movingbg12 /*side*/
+{
+   from {background-position:-300px -300px}
+    to  {background-position:-900px -300px}
+}
+div.base1
+{
+    width:300px;height:300px;
+    position:relative;
+    background-image:url(https://static.photocdn.pt/images/articles/2017/04/28/iStock-546424192.jpg)
+}
+#p4{animation:movingbg11 30s infinite;top:231px;left:19px}
+#p5{animation:movingbg12 30s infinite; left:319px; top:-165px; transform:skew(0,-48deg); width:174px}
+#p6{animation:movingbg13 30s infinite; top:100px; left:107px; top:-564px; transform:skew(-42deg,0deg); height:195px}
+</style>
+<div  id=bigdiv>
+<div id=p4 class=base1 ><!-- --></div>
+<div id=p5 class=base1 ><!-- --></div>
+<div id=p6 class=base1 ><!-- --></div>
+</div>
+
+</body>

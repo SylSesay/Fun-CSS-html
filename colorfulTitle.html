@@ -1,0 +1,123 @@
+<html>
+<head>
+ 
+<style>
+ 
+ 
+div.letter{
+   position:relative;
+   text-align:center;
+   font-size:50px;
+   width:50px;
+   height:50px
+}
+</style>
+</head>
+<body>
+ 
+<script >
+ 
+function randint(upper)
+{
+    return Math.floor(Math.random()*upper); 
+}
+
+function randcolor()
+{
+     return "rgb(" + randint(256) +"," + randint(256) + "," + randint(256) + ")";
+}
+
+function randstyle(top,left)
+{
+   var s = 'color:' + randcolor() + ";";
+   s += "background-color:" + randcolor() + ";";        
+   s += "transform:rotate(" + (randint(2)==0?"":"-") + (randint(8)+2) + "deg);";      
+   s += "top:" + top + "px; left:" + left + "px";
+   return s;
+}
+
+function makeframes(N)
+{
+    var str = ""; 
+    for (var i=0; i < N; i++)
+    {
+          var top = basetop-i*50+randint(4) - 3*i;
+          var left = baseleft+i*50;
+          str += makeakeyframe(i, left, top);
+    }
+    var d= document.getElementById('keyf');
+    d.innerHTML = str; 
+}
+function colorfultitle(title,basetop,baseleft)
+{
+      if (basetop==null)
+         basetop = 50;
+      if (baseleft == null)
+         baseleft = 10;
+ 
+      var s = "";
+     
+     for (var i=0; i < title.length; i++)
+    {
+          var top = basetop-i*50+randint(4) - 3*i;
+          var left = baseleft+i*50;
+          var ch = title.charAt(i).toUpperCase();
+          s += "<div class=letter style=\"";
+          s += randstyle(top,  left + randint(2)) ;
+          s +=  "\">" + ch + "</div>";
+    }
+    document.ready(s);
+}
+//colorfultitle("delaware state");
+
+ function makeakeyframe(n, dl, dt)
+ {
+      var rx = randint(800) ;
+      var ry = randint(600) ;
+      var str = "@keyframes letterFly" + n
+     + "{ from{top:" + rx+ "px;left:" + ry + "px;transform:rotate(200deg);background-color:" + randcolor() + "}\n to{top:" + (dt) +"px;left:" + (dl) + "px;transform:rotate(-4deg);background-color:" + randcolor() + "}\n}";
+ return str;
+}
+ 
+function makeakeyframe(n, x ,y)
+{
+     var astyle = document.createElement('style');
+     astyle.innerHTML = '@keyframes letterFly' + n
+     + "{ from{top:" + randint(800) + "px;left:" + randint(600) + "px;transform:rotate(" + randint(360) + "deg);"
+     + "background-color:red}\n"
+     + "to {top:" + y +"px;left:" + x + "px;transform:rotate(" + randint(5) + "deg);"
+     + "background-color:" + randcolor() + "}}";
+ 
+     var head = document.getElementsByTagName('head')[0];
+     head.appendChild(astyle);
+}
+
+function makemanykeyframes(N)
+{
+    if (N == null) N = 20;
+    for (var n=0; n < N; n++)
+    {
+         makeakeyframe(n, n*50, 50);
+    }
+}
+
+function makethetitle(title)
+{
+    for (var j=0; j < title.length;  j++)
+    {
+       title = title.toUpperCase();
+       var ch = title.charAt(j);
+       var dv = document.createElement('div');
+       dv.className = 'letter';
+       dv.style.cssText = 'font-size:40px;font-weight:700;height:50px;animation-name:letterFly' + j +';animation-duration:3s; animation-fill-mode:forward;';
+       dv.innerHTML = ch;
+       document.body.appendChild(dv);
+    }
+
+}
+makemanykeyframes();
+makethetitle("Welcome");
+</script>
+
+</body>
+</html>

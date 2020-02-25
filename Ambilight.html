@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ambilight css</title>
+</head>
+<body>
+  <div class="box"></div>
+  <div class="box box--img"></div>
+</body>
+</html>
+<style>
+body{
+  display: flex;
+  height: 100vh;
+  width: 90vw;
+  background-color: #0a0a0a;
+  margin: auto;
+}
+
+@keyframes animateBg { 
+  0%{background-position:0% 54%}
+  50%{background-position:100% 47%}
+  100%{background-position:0% 54%}
+}
+  
+.box{
+  background: linear-gradient(240deg, #f9d423, #ff4e50, #9d50bb, #6e48aa, #b3ffab, #12fff7);
+  background-size: 1200% 1200%;
+  animation: animateBg 10s ease infinite;
+  width: 300px;
+  height: 150px;
+  margin: auto;
+  position: relative;
+  
+  &--img{
+    background: url('https://i.ytimg.com/vi/sr_vL2anfXA/maxresdefault.jpg');
+    animation: none;
+    background-size: 100% 100%;
+  }
+  
+  &:after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    z-index: -1;
+    filter: blur(15px);
+  }
+}
+</style>

@@ -1,0 +1,208 @@
+<html>
+/*DSU is rolling*/
+<style>
+body{
+	background-color:black;
+}
+#name {
+	background: linear-gradient(to right, #00ffff 0%, #cc66ff 100%);
+	color: white;
+	//font-family: Georgia cursive;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-size: 30pt;
+	position: absolute;
+	left: 1100px;
+	top: 365px;
+	z-index:-1;
+}
+.box{
+	width:100px;
+	height:100px;
+	font-size:70pt;
+	text-align:center;
+	background-color:blue;
+	border:1px solid black;
+	margin-bottom:20px;
+}
+.wrapper{
+	border: 1px solid blue;
+	box-shadow:2px 2px 4px;
+	padding:10px;
+	padding-left:60px;
+	width:850px;
+}
+.box1{
+	transition: transform 2s linear, border-radius 2s linear;
+}
+.box2{
+	transition: transform 2s ease-in, border-radius 2s linear;
+}
+.box3{
+	transition: transform 2s ease-in-out, border-radius 2s linear;
+}
+.box4{
+	transition: transform 2s cubic-bezier(.42,-0.3,.18,-0.26), border-radius 2s linear;
+}
+.wrapper:hover .box{
+	transform: translateX(700px) rotate(1080deg);
+	border-radius:50%;
+}
+#button + #container {
+	box-sizing: border-box;
+  	color: #454845;
+  	font-weight: 700;
+  	font-family: "Montserrat", "Helvetica", sans-serif;
+  	font-size: 1.4rem;
+  	padding: 0;
+  	margin: 0;
+}
+#container {
+  	//display: flex;
+  	//flex-direction: column;
+  	align-items: center;
+  	justify-content: center;
+  	height: 100px;
+  	width: 300px;
+	left:50px;
+	
+}
+#button {
+  	background-color: rgba(220, 220, 235, 0.5);
+  	cursor: pointer;
+  	border-radius: 7px;
+  	transition: all ease-in-out 0.5s;
+  	margin-top: 2rem;
+}
+#button:hover {
+  	background-color: rgba(220, 220, 235, 0.7);
+  	transition: all ease 0.3s;
+}
+#logo {
+	text-align:center;
+	font-size:50px;
+	
+	color:white;
+	z-index:2;
+}
+</style>
+<body>
+<div class="wrapper">
+	<div class="box1 box">D</div>
+  	<div class="box2 box">E</div>
+  	<div class="box3 box">S</div>
+  	<div class="box4 box">U</div>
+</div>
+<div id="name">Sylvia Sesay</div>
+<div id="container"> 
+  	<div id="button" onclick="generate();">
+	PRESS ME!
+	</div>  	
+</div>
+<div id="logo">Welcome</div>
+<canvas></canvas>
+</body>
+<script>
+
+function randInt(upper){
+    return Math.floor(Math.random()*upper); 
+}
+function randColor(){
+     return "rgb(" + randInt(256) +"," + randInt(256) + "," + randInt(256) + ")";
+}
+function randstyle(top,left)
+{
+   var s = 'color:' + randcolor() + ";";
+   s += "background-color:" + randcolor() + ";";        
+   s += "transform:rotate(" + (randint(2)==0?"":"-") + (randint(8)+2) + "deg);";      
+   s += "top:" + top + "px; left:" + left + "px";
+   return s;
+}
+function randRadius(){
+	return radius = (width / 2) + (height/2) + "px";
+}
+function generate() {
+	var hexValues = [
+    		"0","1","2","3","4","5","6","7","8","9","a","b","c","d","e"];
+	function populate(a) {
+   		for (var i = 0; i < 6; i++) {
+      			var x = Math.round(Math.random() * 14);
+      			var y = hexValues[x];
+      			a += y;
+    		}
+    		return a;
+  	}
+  	var newColor1 = populate("#");
+  	var newColor2 = populate("#");
+  	var angle = Math.round(Math.random() * 360);
+
+  	var gradient =
+    	"linear-gradient(" + angle + "deg, " + newColor1 + ", " + newColor2 + ")";
+
+  	document.getElementById("container").innerHTML = gradient;
+}
+document.onload = generate();
+
+function resizeCanvas () {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+function radians(degrees) {
+  return Math.PI / 180 * degrees;
+}
+function centeredRect(x, y, width, height) {
+  var halfWidth = width / 2;
+  var halfHeight = height / 2;
+  ctx.fillRect(x - halfWidth, y - halfHeight, width, height);
+}
+var canvas = document.querySelector("canvas");
+var ctx = canvas.getContext("2d");
+resizeCanvas();
+
+var globalRotation = 0;
+
+document.onkeydown = function() {
+  event.preventDefault();
+  globalRotation += 3;
+};
+
+window.onresize = function() {
+  resizeCanvas();
+};
+function drawScene() {
+  ctx.resetTransform();
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "red";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.font = "30px Helvetica, sans-serif";
+  ctx.fillStyle = "black";
+  ctx.fillText("Press Any Key To Rotate", 20, 40);
+
+  ctx.translate(canvas.width / 2, canvas.height / 2);
+  ctx.rotate(radians(globalRotation));
+
+  centeredRect(0, 0, 10, 10);
+
+  var blueSquares = [45, 135, 225, 315];
+  ctx.fillStyle = "blue";
+
+  blueSquares.forEach(function(angle) {
+    ctx.save();
+
+    ctx.rotate(radians(-angle));
+    ctx.translate(100, 0);
+    ctx.rotate(radians(angle));
+    centeredRect(0, 0, 20, 20);
+
+    ctx.restore();
+  });
+
+  requestAnimationFrame(function() {
+    drawScene();
+  });
+}
+
+drawScene();
+
+</script>

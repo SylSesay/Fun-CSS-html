@@ -1,0 +1,157 @@
+<html>
+
+<style>
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+cube {
+  display: block;
+  width: 100px;
+  height: 100px;
+  transform-style: preserve-3d;
+  position: relative;
+  animation: spin 7s infinite linear;
+  margin: 50px;
+}
+
+cube div {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  display: block;
+  background-image: url("https://static.tumblr.com/minmqb8/iowmmu9vl/tileable_wood_texture_by_ft.jpg");
+  background-size: 100px 100px;
+  will-change: transform;
+}
+
+cube .front {
+  transform: translateZ(50px);
+  box-shadow: inset 0px -50px 50px rgba(0, 0, 0, 0.4);
+}
+
+cube .back {
+  transform: translate3d(-50px) rotateY(180deg);
+  animation: backFold 7s infinite;
+  box-shadow: inset 0px -50px 50px rgba(0, 0, 0, 0.4);
+}
+
+cube .top {
+  transform: rotateX(90deg);
+  animation: topDarken 7s infinite;
+  margin-top: -50px;
+}
+
+cube .right {
+  transform: rotateY(90deg);
+  margin-left: 50px;
+  box-shadow: inset 0px -50px 50px rgba(0, 0, 0, 0.4);
+}
+
+cube .bottom {
+  transform: rotateX(-90deg);
+  margin-top: 50px;
+  box-shadow: inset 0px 0px 0px 50px rgba(0, 0, 0, 0.4);
+}
+
+cube .left {
+  transform: rotateY(-90deg);
+  margin-left: -50px;
+  box-shadow: inset 0px -50px 50px rgba(0, 0, 0, 0.4);
+}
+
+cube .shadow {
+  transform: rotateX(-90deg);
+  margin-top: 150px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  animation: shadowBounce 7s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateX(-20deg) rotateY(0deg);
+    margin-top: 50px;
+  }
+  25% {
+    margin-top: 70px;
+  }
+  50% {
+    margin-top: 50px;
+  }
+  75% {
+    margin-top: 70px;
+  }
+  100% {
+    transform: rotateX(-20deg) rotateY(360deg);
+    margin-top: 50px;
+  }
+}
+
+@keyframes shadowBounce {
+  0% {
+    margin-top: 150px;
+    height: 100px;
+    transform: rotateX(-90deg) translateY(0px);
+  }
+  25% {
+    margin-top: 130px;
+    height: 120px;
+    transform: rotateX(-90deg) translateY(20px);
+  }
+  50% {
+    margin-top: 150px;
+    height: 100px;
+    transform: rotateX(-90deg) translateY(0px);
+  }
+  75% {
+    margin-top: 130px;
+    height: 120px;
+    transform: rotateX(-90deg) translateY(20px);
+  }
+  100% {
+    margin-top: 150px;
+    height: 100px;
+    transform: rotateX(-90deg) translateY(0px);
+  }
+}
+
+@keyframes backFold {
+  0% {
+    transform: rotateX(0deg) translateZ(-50px);
+    box-shadow: inset 0px -50px 50px rgba(0, 0, 0, 0.4);
+  }
+  50% {
+    transform: rotateX(-90deg) translateZ(-100px);
+    box-shadow: inset 0px -50px 50px rgba(0, 0, 0, 0);
+  }
+  100% {
+    transform: rotateX(0deg) translateZ(-50px);
+    box-shadow: inset 0px -50px 50px rgba(0, 0, 0, 0.4);
+  }
+}
+
+@keyframes topDarken {
+  0% {
+    box-shadow: inset 0px 0px 0px 50px rgba(0, 0, 0, 0);
+  }
+  50% {
+    box-shadow: inset 0px 0px 0px 50px rgba(0, 0, 0, 0.4);
+  }
+  100% {
+    box-shadow: inset 0px 0px 0px 50px rgba(0, 0, 0, 0);
+  }
+}
+
+</style>
+
+<cube>
+  <div class="front"></div>
+  <div class="back"></div>
+  <div class="top"></div>
+  <div class="right"></div>
+  <div class="bottom"></div>
+  <div class="left"></div>
+  <div class="shadow"></div>
+</cube>

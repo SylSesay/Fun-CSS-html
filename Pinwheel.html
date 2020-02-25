@@ -1,0 +1,96 @@
+<html>
+<style>
+.spin-wrap {
+  height: 240px;
+  left: 0px;
+  margin: -120px auto 0;
+  position: fixed;
+  right: 0px;
+  top: 50%;
+  width: 150px;
+}
+.spin {
+  position: relative;
+}
+.spin .chorki-stick {
+  background: #fff;
+  height: 170px;
+  left: 70px;
+  position: absolute;
+  top: 70px;
+  width: 8px;
+  -webkit-box-shadow: inset 0px 0px 4px 1px #666;
+  -moz-box-shadow: inset 0px 0px 4px 1px #666;
+  box-shadow: inset 0px 0px 4px 1px #666;
+}
+.spin .chorki-icon {
+  height: auto;
+  position: relative;
+  width: 150px;
+  z-index: 5;
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 5s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: spin;
+  -moz-animation-duration: 5s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -ms-animation-name: spin;
+  -ms-animation-duration: 5s;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-timing-function: linear;
+  animation-name: spin;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.spin .chorki-icon:hover,
+.spin .chorki-icon:focus,
+.spin .chorki-icon:active {
+  -webkit-animation-duration: 0.8s;
+  -moz-animation-duration: 0.8s;
+  -ms-animation-duration: 0.8s;
+  animation-duration: 0.8s;
+}
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-moz-keyframes spin {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-ms-keyframes spin {
+  from {
+    -ms-transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+</style>
+<body>
+<div class="spin-wrap">
+  <div class="spin">
+    <img class="chorki-icon" src="https://princekhanlive.files.wordpress.com/2016/04/chorki-1.png" alt="" />
+    <div class="chorki-stick"></div>
+  </div>
+</div>
+</body>
